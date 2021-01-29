@@ -1,1 +1,0 @@
-# fullstack-rest-template

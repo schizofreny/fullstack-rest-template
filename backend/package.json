@@ -1,0 +1,45 @@
+{
+  "name": "@fullstack-rest-template/backend",
+  "version": "1.0.0",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "@babel/runtime": "^7.11.2",
+    "@sinclair/typebox": "^0.12.7",
+    "core-js": "3",
+    "envalid": "^6.0.2",
+    "fastify": "^3.9.2",
+    "fastify-static": "^3.4.0",
+    "fastify-swagger": "^4.0.0",
+    "pino-pretty": "^4.3.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.10.5",
+    "@babel/core": "^7.11.4",
+    "@babel/node": "^7.10.5",
+    "@babel/plugin-proposal-class-properties": "^7.10.4",
+    "@babel/plugin-transform-runtime": "^7.11.0",
+    "@babel/preset-env": "^7.11.0",
+    "@babel/preset-typescript": "^7.10.4",
+    "@types/node": "^14.14.19",
+    "@types/tap": "^14.10.1",
+    "eslint": "^7.8.1",
+    "eslint-config-prettier": "^7.1.0",
+    "nodemon": "^2.0.7",
+    "openapi-types": "^7.2.3",
+    "rimraf": "^3.0.2",
+    "tap": "^14.11.0"
+  },
+  "scripts": {
+    "start": "babel-node --extensions .ts src/app.ts",
+    "start:watch": "nodemon --exec \"yarn start\" --watch src --ext .ts",
+    "build": "yarn build:clean && yarn build:types && yarn build:js",
+    "build:clean": "rimraf ./dist && rimraf ./build",
+    "build:types": "tsc --noEmit",
+    "build:js": "babel src --out-dir dist --extensions \".ts\" --source-maps inline",
+    "lint": "eslint ./src --ext .js,.ts",
+    "lint:fix": "yarn lint --fix",
+    "format": "prettier src/**/*.{js,ts} --list-different",
+    "format:fix": "yarn format --write",
+    "test": "tap --reporter=list --watch"
+  }
+}

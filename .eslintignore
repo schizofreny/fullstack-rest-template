@@ -1,0 +1,8 @@
+**/dist
+**/generated
+**/node_modules
+**/.git
+
+**/.eslintrc.js
+**/babel.config.js
+**/webpack.config.js

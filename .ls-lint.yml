@@ -1,0 +1,12 @@
+ls:
+  packages/**/src:
+    .js: camelCase
+    .jsx: camelCase | PascalCase
+    .ts: camelCase
+    .tsx: camelCase | PascalCase
+    .d.ts: camelCase
+    .dir: camelCase
+
+ignore:
+  - frontend/src/generated
+  - backend/src/generated

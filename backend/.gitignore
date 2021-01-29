@@ -1,0 +1,10 @@
+# yarn
+node_modules
+yarn-error.log
+
+# build
+dist
+build
+
+# tests
+.nyc_output
