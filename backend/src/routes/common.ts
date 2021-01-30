@@ -10,8 +10,7 @@ export const GenericErrorSchema = Type.Object(
   { description: "Generic error object" }
 )
 
-export const BadRequestError = createError("BAD_REQUEST", "[bad request error]", 400)
-export const ForbiddenError = createError("FORBIDDEN", "[forbidden error]", 403)
-export const NotFoundError = createError("NOT_FOUND", "[not found error]", 404)
-
-export const InternalServerError = createError("INTERNAL_SERVER_ERROR", "[internal server error]", 500)
+export const BadRequestError = createError("BAD_REQUEST", "bad request", 400)
+export const ForbiddenError = createError("FORBIDDEN", "forbidden", 403)
+export const NotFoundError = createError("NOT_FOUND", "not found", 404)
+export const InternalServerError = createError("INTERNAL_SERVER_ERROR", "internal server error", 500)
