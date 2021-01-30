@@ -28,7 +28,7 @@
     "lint:lslint": "ls-lint",
     "format": "prettier \"./**/*.{js,jsx,ts,tsx}\" --list-different",
     "format:fix": "yarn format --write",
-    "start": "concurrently --kill-others-on-fail \"yarn workspace @fullstack-rest-template/frontend run start\" \"yarn workspace @fullstack-rest-template/backend run start\"",
+    "start": "concurrently --kill-others-on-fail \"yarn workspace @fullstack-rest-template/frontend run start\" \"yarn workspace @fullstack-rest-template/backend run start:watch\"",
     "build": "yarn workspace @fullstack-rest-template/backend run build && yarn workspace @fullstack-rest-template/frontend run build ",
     "generate": "yarn workspaces run generate",
     "generate:watch": "nodemon --delay 3000ms --exec \"yarn workspaces run generate\" --watch packages/frontend/src --watch packages/backend/src --ext .ts,.tsx"

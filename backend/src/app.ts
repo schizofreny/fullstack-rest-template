@@ -10,3 +10,8 @@ server.listen(env.SERVER_PORT, env.isProd ? "0.0.0.0" : "localhost", (err) => {
     process.exit(1)
   }
 })
+
+// exit node process on unhandled promise rejections
+process.on("unhandledRejection", (error) => {
+  throw error
+})
