@@ -2,12 +2,15 @@ import fastify from "fastify"
 import fastifyStatic from "fastify-static"
 import fastifySwagger from "fastify-swagger"
 import path from "path"
-import { InternalServerError } from "./routes/common"
 import { routerPlugin } from "./routes/router"
+import { InternalServerError } from "./utils/errors"
+import logger from "./utils/logger"
 
+// NOTE there is recommended order to load plugins (and routes)
+// See here: https://www.fastify.io/docs/latest/Getting-Started/#loading-order-of-your-plugins
 export const createServer = () => {
   // Require the framework and instantiate it
-  const server = fastify({ logger: { level: "info", prettyPrint: true } })
+  const server = fastify({ logger: logger })
 
   // Adding swagger
   // This must be registered before all other routes
@@ -16,9 +19,6 @@ export const createServer = () => {
     // dynamic mode searches for routes automatically
     mode: "dynamic",
   })
-
-  // Register route plugins
-  server.register(routerPlugin, { prefix: "api" })
 
   // Serve frontend static files
   server.register(fastifyStatic, {
@@ -44,6 +44,9 @@ export const createServer = () => {
 
     return error
   })
+
+  // Register route plugins
+  server.register(routerPlugin, { prefix: "api" })
 
   return server
 }

@@ -1,5 +1,5 @@
+import { GenericErrorSchema, InternalServerError, NotFoundError } from "../utils/errors"
 import { PluginRegisterFn } from "../utils/types"
-import { GenericErrorSchema, InternalServerError, NotFoundError } from "./common"
 import { itemRoutes } from "./items/itemRoutes"
 
 export const routerPlugin: PluginRegisterFn = async (fastify) => {
