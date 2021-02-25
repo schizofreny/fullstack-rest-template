@@ -1,9 +1,9 @@
 ls:
-  packages/**/src:
-    .js: camelCase
-    .jsx: camelCase | PascalCase
-    .ts: camelCase
-    .tsx: camelCase | PascalCase
+  "{frontend,backend}/src":
+    .js: camelCase | point.case
+    .jsx: camelCase | PascalCase | point.case
+    .ts: camelCase | point.case
+    .tsx: camelCase | PascalCase | point.case
     .d.ts: camelCase
     .dir: camelCase
 

@@ -3,28 +3,32 @@
   "version": "1.0.0",
   "license": "UNLICENSED",
   "dependencies": {
-    "@babel/runtime": "^7.11.2",
+    "@babel/runtime": "^7.12.18",
+    "@nexus/schema": "^0.20.1",
     "@sinclair/typebox": "^0.12.7",
-    "core-js": "3",
-    "envalid": "^6.0.2",
-    "fastify": "^3.9.2",
+    "apollo-server-fastify": "^3.0.0-alpha.3",
+    "core-js": "3.9.0",
+    "dotenv": "^8.2.0",
+    "envalid": "^7.0.0",
+    "fastify": "^3.12.0",
     "fastify-static": "^3.4.0",
-    "fastify-swagger": "^4.0.0",
-    "pino": "^6.11.0",
-    "pino-pretty": "^4.3.0"
+    "fastify-swagger": "^4.3.1",
+    "graphql": "^15.5.0",
+    "pino": "^6.11.1",
+    "pino-pretty": "^4.5.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.10.5",
-    "@babel/core": "^7.11.4",
-    "@babel/node": "^7.10.5",
-    "@babel/plugin-proposal-class-properties": "^7.10.4",
-    "@babel/plugin-transform-runtime": "^7.11.0",
-    "@babel/preset-env": "^7.11.0",
-    "@babel/preset-typescript": "^7.10.4",
-    "@types/node": "^14.14.19",
-    "@types/pino": "^6.3.5",
+    "@babel/cli": "^7.12.17",
+    "@babel/core": "^7.12.17",
+    "@babel/node": "^7.12.17",
+    "@babel/plugin-proposal-class-properties": "^7.12.13",
+    "@babel/plugin-transform-runtime": "^7.12.17",
+    "@babel/preset-env": "^7.12.17",
+    "@babel/preset-typescript": "^7.12.17",
+    "@types/node": "^14.14.30",
+    "@types/pino": "^6.3.6",
     "@types/tap": "^14.10.1",
-    "eslint": "^7.8.1",
+    "eslint": "^7.20.0",
     "eslint-config-prettier": "^7.1.0",
     "nodemon": "^2.0.7",
     "openapi-types": "^7.2.3",
@@ -32,7 +36,7 @@
     "tap": "^14.11.0"
   },
   "scripts": {
-    "start": "babel-node --extensions .ts src/app.ts",
+    "start": "babel-node --trace-warnings --extensions .ts src/app.ts",
     "start:watch": "nodemon --exec \"yarn start\" --watch src --ext .ts",
     "build": "yarn build:clean && yarn build:types && yarn build:js",
     "build:clean": "rimraf ./dist && rimraf ./build",
@@ -42,6 +46,7 @@
     "lint:fix": "yarn lint --fix",
     "format": "prettier src/**/*.{js,ts} --list-different",
     "format:fix": "yarn format --write",
-    "test": "tap --reporter=list --watch"
+    "test": "tap --reporter=list --watch",
+    "generate": "babel-node --extensions .ts src/graphql/schema.ts"
   }
 }

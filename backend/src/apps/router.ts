@@ -1,11 +1,7 @@
 import { GenericErrorSchema, InternalServerError, NotFoundError } from "../utils/errors"
 import { PluginRegisterFn } from "../utils/types"
-import { itemRoutes } from "./items/itemRoutes"
 
 export const routerPlugin: PluginRegisterFn = async (fastify) => {
-  // register all subroutes here
-  fastify.register(itemRoutes, { prefix: "items" })
-
   // route for error handling test
   fastify.route({
     method: "GET",
@@ -26,9 +22,7 @@ export const routerPlugin: PluginRegisterFn = async (fastify) => {
     method: "GET",
     schema: { hide: true },
     url: "/healthz",
-    handler: async () => {
-      return {}
-    },
+    handler: async () => ({}),
   })
 
   // override 404 redirect to React frontend on api routes

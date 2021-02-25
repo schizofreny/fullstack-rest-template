@@ -1,7 +1,6 @@
 import React from "react"
 import { BrowserRouter } from "react-router-dom"
 import Router from "./Router"
-import { withStyles } from "./styles/withStyles"
 
 const App = () => {
   return (
@@ -11,4 +10,4 @@ const App = () => {
   )
 }
 
-export default withStyles(App)
+export default App
