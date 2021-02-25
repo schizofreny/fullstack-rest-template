@@ -3,7 +3,7 @@ FROM node:14-alpine AS builder
 WORKDIR /srv
 
 COPY [".", "./"]
-RUN yarn install --non-interactive && yarn build
+RUN yarn install --non-interactive && yarn generate && yarn build
 
 # ======================================
 

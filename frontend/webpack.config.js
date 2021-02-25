@@ -24,7 +24,7 @@ module.exports = () => {
       extensions: [".js", ".jsx", ".ts", ".tsx"],
     },
     plugins: [
-      new ForkTsCheckerWebpackPlugin({ eslint: { files: "./src/**/*.{ts,tsx,js,jsx}" } }),
+      new ForkTsCheckerWebpackPlugin(),
       new HtmlWebPackPlugin({ template: "./public/index.html" }),
       new CleanWebpackPlugin(),
     ],

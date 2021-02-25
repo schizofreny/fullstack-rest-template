@@ -4,7 +4,7 @@ const parentConfig = require("../.eslintrc.js")
 module.exports = {
   ...parentConfig,
   plugins: [...parentConfig.plugins, "react-hooks"],
-  extends: [...parentConfig.extends, "plugin:react/recommended", "prettier/react"],
+  extends: [...parentConfig.extends, "plugin:react/recommended"],
   rules: {
     ...parentConfig.rules,
     "react/prop-types": ["off"],
