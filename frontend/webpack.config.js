@@ -38,6 +38,7 @@ module.exports = () => {
       historyApiFallback: true,
       proxy: {
         "/api": "http://localhost:4000",
+        "/graphql": "http://localhost:4000",
       },
     },
   }

@@ -1,0 +1,12 @@
+overwrite: true
+schema: "backend/src/generated/schema.graphql"
+documents: "frontend/src/**/*.tsx"
+generates:
+  frontend/src/generated/graphql.tsx:
+    plugins:
+      - "typescript"
+      - "typescript-operations"
+      - "typescript-urql"
+  frontend/src/generated/graphql.schema.json:
+    plugins:
+      - "introspection"
