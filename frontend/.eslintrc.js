@@ -1,12 +1,9 @@
 const path = require("path")
-const parentConfig = require("../.eslintrc.js")
 
 module.exports = {
-  ...parentConfig,
-  plugins: [...parentConfig.plugins, "react-hooks"],
-  extends: [...parentConfig.extends, "plugin:react/recommended"],
+  plugins: ["react-hooks"],
+  extends: ["../.eslintrc.js", "plugin:react/recommended"],
   rules: {
-    ...parentConfig.rules,
     "react/prop-types": ["off"],
     "react/self-closing-comp": ["warn"],
     "react-hooks/rules-of-hooks": "error",
