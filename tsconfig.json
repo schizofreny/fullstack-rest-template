@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": ["es6"],
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "importsNotUsedAsValues": "preserve",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "incremental": true,
+    "noEmit": true
+  }
+}
