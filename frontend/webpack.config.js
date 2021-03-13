@@ -22,7 +22,7 @@ module.exports = (env, argv) => {
           loader: "babel-loader",
           exclude: /node_modules/,
           options: {
-            plugins: [isDev ? "react-refresh/babel" : undefined].filter(Boolean),
+            plugins: [isDev && "react-refresh/babel"].filter(Boolean),
           },
         },
       ],
