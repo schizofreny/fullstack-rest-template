@@ -10,7 +10,7 @@ gql`
   }
 `
 
-const User = () => {
+function User() {
   const [{ data, fetching, error }] = useUserQuery()
 
   if (fetching) {

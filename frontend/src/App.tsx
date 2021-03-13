@@ -7,7 +7,7 @@ const urqlClient = createClient({
   url: "/graphql",
 })
 
-const App = () => {
+function App() {
   return (
     <UrqlProvider value={urqlClient}>
       <BrowserRouter>

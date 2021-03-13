@@ -4,11 +4,16 @@ module.exports = {
   plugins: ["react-hooks"],
   extends: ["../.eslintrc.js", "plugin:react/recommended"],
   rules: {
-    "react/prop-types": ["off"],
-    "react/self-closing-comp": ["warn"],
+    "prefer-rest-params": "warn",
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
-    "prefer-rest-params": "warn",
+    "react/prop-types": ["off"],
+    "react/self-closing-comp": ["warn"],
+    "react/jsx-fragments": ["error", "syntax"],
+    "react/function-component-definition": [
+      "error",
+      { namedComponents: "function-declaration", unnamedComponents: "arrow-function" },
+    ],
   },
   settings: {
     react: {
