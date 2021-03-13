@@ -1,9 +1,13 @@
 const path = require("path")
+const webpack = require("webpack")
 const { CleanWebpackPlugin } = require("clean-webpack-plugin")
 const HtmlWebPackPlugin = require("html-webpack-plugin")
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin")
+const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin")
 
-module.exports = () => {
+module.exports = (env, argv) => {
+  const isDev = argv.mode !== "production"
+
   return {
     entry: "./src/main.tsx",
     output: {
@@ -17,6 +21,9 @@ module.exports = () => {
           test: /\.(jsx|tsx|js|ts)$/,
           loader: "babel-loader",
           exclude: /node_modules/,
+          options: {
+            plugins: [isDev ? "react-refresh/babel" : undefined].filter(Boolean),
+          },
         },
       ],
     },
@@ -27,7 +34,9 @@ module.exports = () => {
       new ForkTsCheckerWebpackPlugin(),
       new HtmlWebPackPlugin({ template: "./public/index.html" }),
       new CleanWebpackPlugin(),
-    ],
+      isDev && new webpack.HotModuleReplacementPlugin(),
+      isDev && new ReactRefreshWebpackPlugin(),
+    ].filter(Boolean),
     optimization: {
       splitChunks: {
         chunks: "all",
