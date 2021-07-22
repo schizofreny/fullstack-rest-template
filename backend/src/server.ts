@@ -1,22 +1,27 @@
 import fastify from "fastify"
+import fastifySensible from "fastify-sensible"
 import fastifyStatic from "fastify-static"
 import fastifySwagger from "fastify-swagger"
 import path from "path"
-import { createApolloServer } from "./graphql/apollo"
 import { routerPlugin } from "./apps/router"
-import { InternalServerError, NotFoundError } from "./utils/errors"
+import { createApolloServer } from "./graphql/apollo"
 import logger from "./utils/logger"
 
 // NOTE there is recommended order to load plugins (and routes)
 // See here: https://www.fastify.io/docs/latest/Getting-Started/#loading-order-of-your-plugins
-export const createServer = () => {
+export async function createServer() {
   // Require the framework and instantiate it
   const server = fastify({ logger: logger })
   const graphqlServer = createApolloServer()
 
+  await graphqlServer.start()
+
   // Enable Apollo server
   // We dont want to have graphql routes visible in swagger
   server.register(graphqlServer.createHandler())
+
+  // https://github.com/fastify/fastify-sensible
+  server.register(fastifySensible)
 
   // Adding swagger
   // This must be registered before all routes that we want to include in swagger
@@ -43,24 +48,11 @@ export const createServer = () => {
 
     // we only want to serve get requests
     if (req.method !== "GET") {
-      throw new NotFoundError()
+      throw server.httpErrors.notFound()
     }
 
     // sendFile() sends files relative to fastifyStatic root property
     return reply.sendFile("index.html")
-  })
-
-  // Custom error handler
-  server.setErrorHandler(async (error) => {
-    const { code, statusCode } = error
-
-    // if no code or statusCode found, non Fastify error was thrown
-    // we must replace it with Fastify 500 error because of schema validation
-    if (!code || !statusCode) {
-      return new InternalServerError()
-    }
-
-    return error
   })
 
   // Register route plugins

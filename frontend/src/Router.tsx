@@ -3,7 +3,7 @@ import { Route, Routes } from "react-router"
 import About from "./pages/About"
 import Home from "./pages/Home"
 
-const Router = () => {
+function Router() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
